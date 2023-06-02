@@ -38,14 +38,12 @@ export default {
   },
   methods: {
     isRead() {
-      //var read = this.$route.params.read;
-      var read = new FormData();
-      //this.post.title,
-      //this.post.description,
       this.$api
-        .get("/posts", read)
-        .then(res => {
-          this.posts = res.data;
+        .post("/read", {
+          postId: this.post.id
+        })
+        .then(() => {
+          this.read = true
         })
         .catch(err => {
           console.log(err);
@@ -53,9 +51,15 @@ export default {
     }
   },
   created() {
-      // this.post('title','description');
-      // this.post.title;
-      // this.post.description;
+    this.$api
+        .get("/read/" + this.post.id
+        )
+        .then(() => {
+          this.read = true
+        })
+        .catch(err => {
+          console.log(err);
+        });
     }
   };
 

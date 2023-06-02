@@ -38,9 +38,7 @@ User.init({
 
 User.hasMany(Post);
 Post.belongsTo(User,{
-foreignKey: {
-  allowNull: false
-}
+foreignKey: 'UserId'
 });
 
 module.exports = User;

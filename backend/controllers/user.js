@@ -48,14 +48,14 @@ console.log(req.body.password, user.password)
             });
           }
           const token = jwt.sign(
-            { userId: user._id },
+            { userId: user.id },
             process.env.TOKEN_SECRET,
             {
               expiresIn: "24h",
             }
           );
           res.status(200).json({
-            userId: user._id,
+            userId: user.id,
             token: token,
             expiresIn : new Date().getTime() + 60 * 60 * 24 * 1000
           });

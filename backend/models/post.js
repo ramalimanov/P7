@@ -21,7 +21,15 @@ Post.init({
     primaryKey: true,
     allowNull: false,
     autoIncrement: true
+  },
+   UserId: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
   }
+
+
+
+
 }, {
   // model option
   sequelize,

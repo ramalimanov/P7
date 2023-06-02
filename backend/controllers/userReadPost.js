@@ -3,20 +3,42 @@ const UserReadPost = require("../models/userReadPost");
 exports.isRead = (req, res, next) => {
   UserReadPost.findOne({
     where: {
-      userId: req.auth.userId,
-      postId: req.params.postId,
-      userReadPost: req.params.userReadPost,
+      UserId: req.auth.userId,
+      PostId: req.params.postId,
     },
   })
-    .then((read) => res.send(200).json({ read: true }))
-    .catch((error) => res.sendStatus(404).json(error));
+    .then((read) => {
+      if (read) {
+        return res.sendStatus(201).json({
+          read: true
+        })
+      } else {
+        //  res.sendStatus(404).json({ message: "Didi not find anything" })
+      }
+    })
+    .catch((error) => {
+      console.log(error)
+
+    });
 };
 
 exports.read = (req, res, next) => {
   UserReadPost.create({
-    userId: req.auth.userId,
-    postId: req.params.postId,
+    UserId: req.auth.userId,
+    PostId: req.body.postId,
   })
-    .then((read) => res.send(201).json({ read: true }))
-    .catch((error) => res.send(400).json(error));
+    .then((read) => {
+      console.log(read)
+      if (read) {
+        return res.sendStatus(201).json({
+          read: true
+        })
+      } else {
+        res.sendStatus(404).json({ message: "Didi not find anything" })
+      }
+    })
+    .catch((error) => {
+      console.log(error)
+
+    });
 }; 

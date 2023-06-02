@@ -29,7 +29,7 @@ exports.signup = (req, res, next) => {
 };
 
 exports.login = (req, res, next) => {
-  User.findOne({ where: {email: req.body.email }}) // Fing excist users
+  User.findOne({ where: { email: req.body.email } }) // Fing excist users
     .then((user) => {
       if (!user) {
         return res.status(401).json({
@@ -37,7 +37,7 @@ exports.login = (req, res, next) => {
         });
       }
 
-console.log(req.body.password, user.password)
+      console.log(req.body.password, user.password)
       bcrypt
         .compare(req.body.password, user.password) // comparer user excist with bcrrypt password
         .then((valid) => {
@@ -57,7 +57,7 @@ console.log(req.body.password, user.password)
           res.status(200).json({
             userId: user.id,
             token: token,
-            expiresIn : new Date().getTime() + 60 * 60 * 24 * 1000
+            expiresIn: new Date().getTime() + 60 * 60 * 24 * 1000
           });
         })
         .catch((error) => {

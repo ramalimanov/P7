@@ -1,3 +1,4 @@
+// Connection database mySQL / sequelize
 const { Sequelize } = require("sequelize");
 
 const sequelize = new Sequelize("ramal", "root", "S@010203", {

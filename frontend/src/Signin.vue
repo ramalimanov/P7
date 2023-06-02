@@ -57,23 +57,15 @@ export default {
   },
   methods: {
     signin() {
-      // const auth = {
-      //   username: process.env.VUE_APP_CLIENT_ID,
-      //   password: process.env.VUE_APP_CLIENT_SECRET
-      // };
       const form = new FormData();
-
       form.append("username", this.email);
       form.append("password", this.password);
-      //form.append("grant_type", "password");
-
       this.$guest
       .post("/login", {
         email: this.email,
         password: this.password,
         })
         .then(res => {
-        //  debugger; // eslint-disable-line no-debugger
           this.msg = "You have been successfully logged in!";
           this.classAlert = "success";
           this.email = "";

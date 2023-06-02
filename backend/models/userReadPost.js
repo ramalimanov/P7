@@ -1,3 +1,4 @@
+// Greating userReadPost models
 const sequelize = require("../config/database.js");
 const { DataTypes } = require("sequelize");
 const User = require("./user");

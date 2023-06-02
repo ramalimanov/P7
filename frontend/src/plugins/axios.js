@@ -1,3 +1,4 @@
+// Using axios making comminication with backend
 import Vue from "vue";
 import axios from "axios";
 import { store } from "../store/store";
@@ -7,9 +8,6 @@ const guest = axios.create({
     "Content-Type": "application/json",
   },
   baseURL: "http://localhost:3000/api/auth",
-  /*headers: {
-    "X-Requested-With": "XMLHttpRequest",
-  },*/
 });
 
 const api = axios.create({
@@ -29,10 +27,10 @@ api.interceptors.request.use((config) => {
 });
 
 api.interceptors.response.use(
-  function(response) {
+  function (response) {
     return response;
   },
-  function(error) {
+  function (error) {
     if (error.response.status === 401) {
       store.dispatch("logout");
     } else {

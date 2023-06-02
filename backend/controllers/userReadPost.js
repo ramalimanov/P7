@@ -1,3 +1,4 @@
+// userReadPost page when user click to post it will marked read.
 const UserReadPost = require("../models/userReadPost");
 
 exports.isRead = (req, res, next) => {

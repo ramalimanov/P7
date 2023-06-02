@@ -128,7 +128,6 @@ export default {
           this.msg = err.response.data.messages.error;
           this.classAlert = "danger";
         });
-      //axios
     },
   },
   components: {

@@ -22,7 +22,6 @@ export const store = new Vuex.Store({
       state.isLoggedIn = false;
       localStorage.removeItem("token");
       localStorage.removeItem("expires");
-
       router.push("/signin");
     },
   },

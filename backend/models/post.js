@@ -1,6 +1,7 @@
+// Greating post models data
 const { Sequelize, Model, DataTypes } = require('sequelize')
 const sequelize = require('../config/database.js')
-class Post extends Model {}
+class Post extends Model { }
 
 Post.init({
   description: {
@@ -22,13 +23,10 @@ Post.init({
     allowNull: false,
     autoIncrement: true
   },
-   UserId: {
+  UserId: {
     type: DataTypes.INTEGER,
     allowNull: false,
   }
-
-
-
 
 }, {
   // model option

@@ -21,7 +21,7 @@ exports.createPost = (req, res, next) => {
     });
 };
 
-// https://sequelize.org/docs/v6/core-concepts/model-querying-finders/
+// Getting all post on Home page
 exports.getAllpost = (req, res, next) => {
   Post.findAll()
     .then((posts) => {

@@ -35,7 +35,7 @@ exports.read = (req, res, next) => {
           read: true
         })
       } else {
-        res.sendStatus(404).json({ message: "Didi not find anything" })
+        res.sendStatus(404).json({ message: "Did not find anything" })
       }
     })
     .catch((error) => {

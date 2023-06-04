@@ -71,9 +71,10 @@ export default {
           this.email = "";
           this.password = "";
           this.token = res.data.token;
-          this.expires_in = res.data.expiresIn;
+          this.expires_in = res.data.expiresIn - Date.now();
+          console.log(res.data.expiresIn)
           localStorage.setItem("token", this.token);
-          localStorage.setItem("expires", new Date(this.expires_in));
+          localStorage.setItem("expires",this.expires_in);
           this.$store.dispatch("login", this.expires_in);
         })
         .catch(err => {

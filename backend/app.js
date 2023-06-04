@@ -2,6 +2,8 @@ const cors = require("cors");
 const express = require("express");
 const bodyParser = require("body-parser");
 const path = require("path");
+
+//Adding in my rootes
 const postRoutes = require("./routes/post");
 const userReadPost = require("./routes/userReadPost");
 const userRoutes = require("./routes/user");
@@ -37,13 +39,13 @@ app.use(cors());
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader("Access-Control-Allow-Headers","Origin, X-Requested-With, Content, Accept, Content-Type, Authorization");
-  res.setHeader("Access-Control-Allow-Methods","GET, POST, PUT, DELETE, PATCH, OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content, Accept, Content-Type, Authorization");
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, PATCH, OPTIONS");
   next();
 });
 
 
-// Routes
+//Sign up, loging in, and load posts all need to return somthing else you get a CORS error 
 app.use(bodyParser.json()); // Same as: app.use(express.json());
 app.use("/images", express.static(path.join(__dirname, "images"))); // Telling server we static method pictures uploading file
 app.use("/api/posts", postRoutes);
